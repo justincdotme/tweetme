@@ -18,7 +18,7 @@
 
 ## Usage
 
- The class requires 2 parameters, $credentials and $tweetCount. 
+ The TweetMe class requires 2 parameters, $credentials and $tweetCount. 
  
  - $credentials should be an array containing your Twitter API keys.
  
