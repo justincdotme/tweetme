@@ -12,9 +12,9 @@
  * Use
  * require '../src/autoload.php';
  * header('Content-Type: application/json');
- * $tweetMe = new TweetMe($credentials, 12); //Where 12 is the number of Tweets to return.
+ * $tweetMe = new TweetMe($credentials);
  * $tweetsJson = new TweetMeJson($tweetMe);
- * echo json_decode($tweetsJson->getTweets());
+ * echo json_decode($tweetsJson->getTweets(12); //Where 12 is the number of Tweets to return.
  *
  *
  * PHP Version 5.6
@@ -57,10 +57,11 @@ class TweetMeJson implements TweetMeInterface {
     /**
      * Get a JSON formatted list of Tweets.
      *
+     * @param $count
      * @return string
      */
-    public function getTweets()
+    public function getTweets($count)
     {
-        return json_encode($this->_tweetMe->getTweets());
+        return json_encode($this->_tweetMe->getTweets($count));
     }
 }

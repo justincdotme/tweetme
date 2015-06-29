@@ -18,42 +18,38 @@
 
 ## Usage
 
- The class requires 2 parameters, $credentials and $tweetCount. 
+ The class constructor requires 1 parameter: $credentials. 
  
  - $credentials should be an array containing your Twitter API keys.
- 
- - $tweetCount is used to limit the number of Tweets returned and it's value should be an integer.
 
  The $credentials array should be structured as follows:
-   
-```
+
     $credentials = [
         'oauth_access_token' => ' OAuth token here',
         'oauth_access_token_secret' => 'OAuth token secret here',
         'consumer_key' => 'consumer key here',
         'consumer_secret' => 'consumer secret here'
     ];
-```
 
  **HTML option**
  
  See public/tweetme-html.php for example HTML implementation.
-```
+
     require '../src/autoload.php';
-    $tweetMe = new TweetMe($credentials, 12); //Where 12 is the number of Tweets to return.
+    $tweetMe = new TweetMe($credentials); 
     $htmlTweets = new TweetMeHtml($tweetMe);
-    echo $htmlTweets->getTweets();
-```
+    echo $htmlTweets->getTweets(12); //Where 12 is the number of Tweets to return.
+    
  **JSON option**
 
  See public/tweetme-json.php for example JSON implementation.
-```
+
     require '../src/autoload.php';
     header('Content-Type: application/json');
-    $tweetMe = new TweetMe($credentials, 12); //Where 12 is the number of Tweets to return.
+    $tweetMe = new TweetMe($credentials); 
     $tweetsJson = new TweetMeJson($tweetMe);
-    echo json_decode($tweetsJson->getTweets());
-```
+    echo json_decode($tweetsJson->getTweets(12)); //Where 12 is the number of Tweets to return.
+
 ## License
 
  The MIT License (MIT)

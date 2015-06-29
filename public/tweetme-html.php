@@ -17,6 +17,6 @@ $credentials = [
 
 //HTML option
 require '../src/autoload.php';
-$tweetMe = new TweetMe($credentials, 12);
+$tweetMe = new TweetMe($credentials);
 $htmlTweets = new TweetMeHtml($tweetMe);
-echo $htmlTweets->getTweets();
+echo $htmlTweets->getTweets(12);

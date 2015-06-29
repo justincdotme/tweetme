@@ -59,9 +59,8 @@ class TweetMe implements TweetMeInterface {
     protected $_baseUrl;
     protected $_compositeKey;
     protected $_oauthSignature;
-    protected $_tweetCount;
 
-    public function __construct(array $credentials, $tweetCount)
+    public function __construct(array $credentials)
     {
         $this->_credentials = $credentials;
         $this->_oauth = [
@@ -77,7 +76,6 @@ class TweetMe implements TweetMeInterface {
         $this->_compositeKey = $this->makeCompositeKey($this->_credentials);
         $this->_oauthSignature = $this->makeOauthSignature($this->_baseInfo, $this->_compositeKey);
         $this->_oauth['oauth_signature'] = $this->_oauthSignature;
-        $this->_tweetCount = $tweetCount;
     }
 
     /**
@@ -168,9 +166,10 @@ class TweetMe implements TweetMeInterface {
      * We only need date, user, profile image and tweet text.
      * Convert URLs and Hashtags into clickable links via Regex.
      *
+     * @param $count
      * @return string
      */
-    protected function makeRepackagedTweets()
+    protected function makeRepackagedTweets($count)
     {
         $tweets = json_decode($this->getRawTwitter());
         $repackagedTweets = [];
@@ -189,7 +188,7 @@ class TweetMe implements TweetMeInterface {
                 'tweet'              => $text
             ];
 
-            if(++$i == $this->_tweetCount)
+            if(++$i == $count)
             {
                 break;
             }
@@ -218,9 +217,10 @@ class TweetMe implements TweetMeInterface {
      * Try to get Tweets from the cache file first.
      * Fetch Tweets from Twitter API if no cache/expired cache.
      *
+     * @param $count
      * @return string
      */
-    public function getTweets()
+    public function getTweets($count)
     {
         $cacheFile = 'cache/tweet-cache.txt';
         $expireTime = 15 * 60; //15 minutes.
@@ -235,7 +235,7 @@ class TweetMe implements TweetMeInterface {
             fclose($fh);
             unlink($cacheFile);
         }
-        $tweets = $this->makeRepackagedTweets();
+        $tweets = $this->makeRepackagedTweets($count);
         if(!file_exists('cache'))
         {
             mkdir('cache', 0775);

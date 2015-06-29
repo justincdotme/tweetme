@@ -11,9 +11,9 @@
  *
  * Use
  * require '../src/autoload.php';
- * $tweetMe = new TweetMe($credentials, 12); //Where 12 is the number of Tweets to return.
+ * $tweetMe = new TweetMe($credentials);
  * $htmlTweets = new TweetMeHtml($tweetMe);
- * echo $htmlTweets->getTweets();
+ * echo $htmlTweets->getTweets(12); //Where 12 is the number of Tweets to return.
  *
  *
  * PHP Version 5.6
@@ -56,11 +56,12 @@ class TweetMeHtml implements tweetMeInterface {
     /**
      * Get an HTML formatted list of Tweets.
      *
+     * @param $count
      * @return array
      */
-    public function getTweets()
+    public function getTweets($count)
     {
-        $tweets = json_decode($this->_tweetMe->getTweets());
+        $tweets = json_decode($this->_tweetMe->getTweets($count));
         //$formattedTweets = [];
         $html = '<ul class="list-group">' . "\r\n";
         foreach($tweets as $key => $tweet)

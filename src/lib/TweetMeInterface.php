@@ -2,6 +2,6 @@
 
 interface TweetMeInterface {
 
-    public function getTweets();
+    public function getTweets($count);
 
 }

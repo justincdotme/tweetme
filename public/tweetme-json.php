@@ -17,6 +17,6 @@ $credentials = [
 
 require '../src/autoload.php';
 header('Content-Type: application/json');
-$tweetMe = new TweetMe($credentials, 12);
+$tweetMe = new TweetMe($credentials);
 $tweetsJson = new TweetMeJson($tweetMe);
-echo json_decode($tweetsJson->getTweets());
+echo json_decode($tweetsJson->getTweets(12));
