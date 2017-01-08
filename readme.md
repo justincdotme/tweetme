@@ -2,7 +2,7 @@
  An application for retrieving the statuses from a Twitter user's timeline using the Twitter REST API 1.1. This application caches JSON responses in public/cache/tweet-cache.txt for 15 minutes to avoid Twitter's rate limiting.
 
 **View Demo**
- [https://tweetme.demos.justinc.me](https://tweetme.demos.justinc.me)
+ [https://tweetme.justinc.me](https://tweetme.justinc.me)
  
 ## Requirements
  
