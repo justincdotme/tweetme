@@ -40,7 +40,7 @@
  * @author Justin Christenson <info@justinc.me>
  * @version 1.0.0
  * @license http://opensource.org/licenses/mit-license.php
- * @link http://tweetme.demos.justinc.me
+ * @link https://tweetme.demos.justinc.me
  *
  */
 
