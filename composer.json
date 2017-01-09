@@ -1,0 +1,14 @@
+{
+  "name": "justincdotme/tweetMe",
+  "description": "A simple Twitter feed package for Laravel 5.",
+  "authors": [
+    {
+      "name": "Justin Christenson",
+      "email": "info@justinc.me"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+
+  }
+}
