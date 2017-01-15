@@ -1,14 +1,29 @@
 {
   "name": "justincdotme/tweetMe",
   "description": "A simple Twitter feed package for Laravel 5.",
+  "keywords": [
+    "laravel",
+    "twitter",
+    "simple",
+    "feed"
+  ],
   "authors": [
     {
       "name": "Justin Christenson",
       "email": "info@justinc.me"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Justincdotme\\TweetMe\\": "src/"
+    }
+  },
   "minimum-stability": "dev",
   "require": {
-
+    "illuminate/support": "~5",
+    "nesbot/carbon": "^1.22"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.2"
   }
 }
