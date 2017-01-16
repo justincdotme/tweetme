@@ -1,14 +1,14 @@
 <?php
 
-class OAuthClientTest extends \PHPUnit_Framework_TestCase
+class TwitterOAuthClientTest extends \PHPUnit_Framework_TestCase
 {
     protected $oauth;
 
     public function __construct($name = null, array $data = array(), $dataName = '')
     {
-        $this->configMock = $this->getMockBuilder('Illuminate\Contracts\Config\Repository')->getMock();
+        $this->configMock = $this->getMockBuilder(Illuminate\Contracts\Config\Repository::class)->getMock();
 
-        $this->oauth = new Justincdotme\TweetMe\AuthClient\OAuthClient($this->configMock);
+        $this->oauth = new Justincdotme\TweetMe\AuthClient\TwitterOAuthClient($this->configMock);
 
         parent::__construct($name, $data, $dataName);
     }

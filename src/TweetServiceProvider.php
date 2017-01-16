@@ -2,6 +2,12 @@
 
 namespace Justincdotme\TweetMe;
 
+/**
+ * Class TweetServiceProvider
+ * Laravel 5 Service Provider
+ *
+ * @package Justincdotme\TweetMe
+ */
 class TweetServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
@@ -11,7 +17,10 @@ class TweetServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__ . '/../config/tweetme.php' => config_path('tweetme.php'),
+            __DIR__ . '/../config/.env.tweetme' => base_path('.env.tweetme')
+        ]);
     }
 
     /**
@@ -22,8 +31,8 @@ class TweetServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'Justincdotme\TweetMe\AuthClient\AuthClientInterface',
-            'Justincdotme\TweetMe\AuthClient\OAuthClient'
+            'Justincdotme\TweetMe\AuthClient\TwitterOAuthClientInterface',
+            'Justincdotme\TweetMe\AuthClient\TwitterOAuthClient'
         );
 
         $this->app->bind(

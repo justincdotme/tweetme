@@ -3,8 +3,22 @@
 namespace Justincdotme\TweetMe\HttpClient;
 
 
+/**
+ * Class CurlHttpClient
+ * Http client for Twitter API.
+ *
+ * TODO - Swap out CURL for Guzzle.
+ *
+ * @package Justincdotme\TweetMe\HttpClient
+ */
 class CurlHttpClient implements HttpClientInterface
 {
+    /**
+     * Fetch array of Tweets from Twitter API.
+     *
+     * @param array $params
+     * @return bool|mixed
+     */
     public function getTweets(array $params)
     {
         $handle = curl_init();
@@ -22,9 +36,9 @@ class CurlHttpClient implements HttpClientInterface
         curl_close($handle);
         $tweets = json_decode($tweets);
         if (isset($tweets->errors)) {
-            return false;
+            return [];
         }
-        
+
         return $tweets;
 
     }

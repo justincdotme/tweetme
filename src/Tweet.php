@@ -2,13 +2,36 @@
 
 namespace Justincdotme\TweetMe;
 
+/**
+ * Class Tweet
+ * Represents a Tweet.
+ * Simple DTO with formatting methods.
+ *
+ * @package Justincdotme\TweetMe
+ */
 class Tweet
 {
+    /**
+     * @var mixed
+     */
     public $tweetContent;
+    /**
+     * @var mixed
+     */
     public $profileImage;
+    /**
+     * @var mixed
+     */
     public $username;
+    /**
+     * @var mixed
+     */
     public $dateTweeted;
 
+    /**
+     * Tweet constructor.
+     * @param array $tweetParams
+     */
     public function __construct(array $tweetParams)
     {
         $this->tweetContent = $tweetParams['tweetContent'];
@@ -78,8 +101,8 @@ class Tweet
      */
     protected function formatDate()
     {
-        $tweetDate = explode( ' ', $this->dateTweeted );
-        $this->dateTweeted = $tweetDate[ 0 ] . ', ' . $tweetDate[ 1 ] . ' ' . $tweetDate[ 2 ] . ', ' . $tweetDate[ 5 ];
+        $tweetDate = explode(' ', $this->dateTweeted);
+        $this->dateTweeted = $tweetDate[0] . ', ' . $tweetDate[1] . ' ' . $tweetDate[2] . ', ' . $tweetDate[5];
         return $this;
     }
 }

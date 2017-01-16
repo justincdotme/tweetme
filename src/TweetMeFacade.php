@@ -10,8 +10,17 @@ namespace Justincdotme\TweetMe;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * Class TweetMeFacade
+ * Facade Accessor for TweetMe.
+ *
+ * @package Justincdotme\TweetMe
+ */
 class TweetMeFacade extends Facade
 {
+    /**
+     * @return mixed
+     */
     protected static function getFacadeAccessor()
     {
         return TweetMeInterface::class;

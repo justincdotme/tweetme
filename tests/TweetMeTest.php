@@ -4,19 +4,17 @@ class TweetMeTest extends \PHPUnit_Framework_TestCase
 {
     public function __construct($name = null, array $data = array(), $dataName = '')
     {
-        //$this->oauthMock = $this->getMockBuilder('Justincdotme\TweetMe\AuthClient\AuthClientInterface')->getMock();
-
-        $this->httpClientMock = $this->getMockBuilder('Justincdotme\TweetMe\HttpClient\HttpClientInterface')
+        $this->httpClientMock = $this->getMockBuilder(Justincdotme\TweetMe\HttpClient\HttpClientInterface::class)
             ->setMethods([])
             ->getMock();
 
-        $this->oauthMock = $this->getMockBuilder('Justincdotme\TweetMe\AuthClient\AuthClientInterface')
+        $this->oauthMock = $this->getMockBuilder(Justincdotme\TweetMe\AuthClient\TwitterOAuthClientInterface::class)
             ->setMethods([])
             ->getMock();
 
-        $this->configMock = $this->getMockBuilder('Illuminate\Contracts\Config\Repository')->getMock();
+        $this->configMock = $this->getMockBuilder(Illuminate\Contracts\Config\Repository::class)->getMock();
 
-        $this->cacheMock = $this->getMockBuilder('Illuminate\Contracts\Cache\Repository')->getMock();
+        $this->cacheMock = $this->getMockBuilder(Illuminate\Contracts\Cache\Repository::class)->getMock();
 
         $this->tweetMe = new Justincdotme\TweetMe\TweetMe(
             $this->oauthMock,
@@ -49,6 +47,12 @@ class TweetMeTest extends \PHPUnit_Framework_TestCase
     public function test_it_calls_make_auth_header ()
     {
         $this->oauthMock->expects($this->exactly(1))->method('makeAuthHeader');
+        $this->tweetMe->getTweets();
+    }
+
+    public function test_it_calls_get_tweets_on_http_client ()
+    {
+        $this->httpClientMock->expects($this->exactly(1))->method('getTweets');
         $this->tweetMe->getTweets();
     }
 }
