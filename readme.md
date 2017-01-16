@@ -8,7 +8,7 @@
 
 ## Installation
 
-    composer require justincdotme/tweetme
+    composer require justincdotme/tweetme SOON!
     
     php artisan vendor:publish
     
