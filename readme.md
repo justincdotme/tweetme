@@ -8,7 +8,7 @@
 
 ## Installation
 
-    composer require justincdotme/tweetme SOON!
+    On Packagist soon!
     
     php artisan vendor:publish
     
