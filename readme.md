@@ -1,12 +1,27 @@
 # TweetMe
- A simple Twitter feed package for Laravel 5. 
+ A simple Twitter feed package for Laravel and Lumen 5.*. 
  TweetMe returns a collection of slimmed down Tweets from a user's Twitter message history.
 
 ## Requirements
 
-    Laravel 5.x
+    Laravel 5.*
+    Lumen 5.*
 
-## Installation
+### Lumen 5.* Installation
+Install the package using Composer
+
+    composer require justincdotme/tweetme
+
+You can optionally enable Facades by uncommenting the following from bootstrap/app.php
+
+    $app->withFacades();
+    
+Register the Service Provider by adding the following to bootstrap/app.php
+    
+    $app->register(Justincdotme\TweetMe\TweetServiceProvider::class);
+    
+    
+## Laravel 5.* Installation
 
     composer require justincdotme/tweetme
     
@@ -19,22 +34,16 @@
         Justincdotme\TweetMe\TweetServiceProvider::class,
         ...
     ]
-    
-###### Add the Facade to the aliases array in config/app.php
-    
-    'aliases' => [
-        ...
-        'TweetMe' => Justincdotme\TweetMe\TweetMeFacade::class,
-        ...
-    ]
 
 ###### Add OAuth tokens and keys to .env
-    An example file, .env.tweetme, will be published to the app root directory. 
-    Copy the entries and use them as a starting point for configuring your OAuth credentials.
+    OAUTH_CONSUMER_KEY=""
+    OAUTH_ACCESS_TOKEN=""
+    OAUTH_CONSUMER_SECRET=""
+    OAUTH_ACCESS_TOKEN_SECRET=""
         
     
 ## Usage
-    The package exposes one method via the TweetMe class.
+    The TweetMe class exposes one method, getTweets(), which returns a collection.
     Feel free to use the Facade or inject the TweetMeInterface.
     Usage Examples: 
     
@@ -43,3 +52,7 @@
     OR
     
     $jsonResponse = TweetMe::getTweets()->toJson();
+
+## Todo
+  - Implement the Guzzle HTTP lib
+  - Replace OAuth with the Guzzle OAuth implementation
