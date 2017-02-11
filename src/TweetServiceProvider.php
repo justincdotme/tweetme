@@ -31,18 +31,18 @@ class TweetServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'Justincdotme\TweetMe\AuthClient\TwitterOAuthClientInterface',
-            'Justincdotme\TweetMe\AuthClient\TwitterOAuthClient'
+            \Justincdotme\TweetMe\AuthClient\TwitterOAuthClientInterface::class,
+            \Justincdotme\TweetMe\AuthClient\TwitterOAuthClient::class
         );
 
         $this->app->bind(
-            'Justincdotme\TweetMe\TweetMeInterface',
-            'Justincdotme\TweetMe\TweetMe'
+            \Justincdotme\TweetMe\TweetMeInterface::class,
+            \Justincdotme\TweetMe\TweetMe::class
         );
 
         $this->app->bind(
-            'Justincdotme\TweetMe\HttpClient\HttpClientInterface',
-            'Justincdotme\TweetMe\HttpClient\CurlHttpClient'
+            \Justincdotme\TweetMe\HttpClient\HttpClientInterface::class,
+            \Justincdotme\TweetMe\HttpClient\CurlHttpClient::class
         );
     }
 }

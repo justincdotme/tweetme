@@ -23,6 +23,6 @@ class TweetMeFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return TweetMeInterface::class;
+        return app()->make(TweetMeInterface::class);
     }
 }
