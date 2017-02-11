@@ -1,6 +1,8 @@
 <?php
 
-class TweetTest extends \PHPUnit_Framework_TestCase
+use \PHPUnit\Framework\TestCase;
+
+class TweetTest extends TestCase
 {
     protected $tweet;
 

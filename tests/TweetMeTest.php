@@ -1,6 +1,8 @@
 <?php
 
-class TweetMeTest extends \PHPUnit_Framework_TestCase
+use \PHPUnit\Framework\TestCase;
+
+class TweetMeTest extends TestCase
 {
     public function __construct($name = null, array $data = array(), $dataName = '')
     {

@@ -20,9 +20,10 @@
   },
   "minimum-stability": "dev",
   "require": {
-    "illuminate/support": "~5"
+    "illuminate/support": "~5",
+    "nesbot/carbon": "^1.22"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.2"
+    "phpunit/phpunit": "~6"
   }
 }

@@ -1,6 +1,8 @@
 <?php
 
-class TwitterOAuthClientTest extends \PHPUnit_Framework_TestCase
+use \PHPUnit\Framework\TestCase;
+
+class TwitterOAuthClientTest extends TestCase
 {
     protected $oauth;
 
