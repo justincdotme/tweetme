@@ -2,6 +2,9 @@
 
 namespace Justincdotme\TweetMe;
 
+use Laravel\Lumen\Application as LumenApplication;
+use Illuminate\Foundation\Application as LaravelApplication;
+
 /**
  * Class TweetServiceProvider
  * Laravel 5 Service Provider
@@ -17,10 +20,13 @@ class TweetServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/../config/tweetme.php' => config_path('tweetme.php'),
-            __DIR__ . '/../config/.env.tweetme' => base_path('.env.tweetme')
-        ]);
+        $configSrc = dirname(__DIR__) .'/config/tweetme.php';
+        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
+            $this->publishes([$configSrc => config_path('tweetme.php')]);
+        } elseif ($this->app instanceof LumenApplication) {
+            $this->app->configure('tweetme');
+        }
+        $this->mergeConfigFrom($configSrc, 'tweetme');
     }
 
     /**
